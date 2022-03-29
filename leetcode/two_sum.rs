@@ -7,7 +7,7 @@ impl Solution {
         */
         let mut output: Vec<i32>= Vec::new();
         for element in 0..nums.len() {
-            for i in 1..nums.len() {
+            for i in element+1..nums.len() {
                 if (nums[element] + nums[i] == target){
                     output.push(element as i32);
                     output.push(i as i32);
