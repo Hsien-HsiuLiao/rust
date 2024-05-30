@@ -1,5 +1,7 @@
 🦀
 
+https://github.com/Hsien-HsiuLiao/rustcamp
+
 https://github.com/Hsien-HsiuLiao/near-dapp-musician
 
 https://github.com/Hsien-HsiuLiao/near-nft
