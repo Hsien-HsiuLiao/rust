@@ -1,3 +1,7 @@
+https://search.brave.com/search?q=version+%60GLIBC_ABI_DT_RELR%27+not+found+%28required+by+gh%29+manjaro&source=web&summary=1&summary_og=a51d3967e7c62aadd9a152
+
+https://github.com/cli/cli/blob/trunk/docs/install_linux.md
+
 https://forum.manjaro.org/t/is-almost-everything-moving-to-flatpak/158868/5
 
 https://wiki.manjaro.org/index.php/Flatpak
