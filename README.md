@@ -1,6 +1,5 @@
 🦀
 
-https://github.com/Hsien-HsiuLiao/rustcamp
 
 https://github.com/Hsien-HsiuLiao/near-dapp-musician
 
