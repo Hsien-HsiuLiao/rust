@@ -3,5 +3,4 @@ Cargo.lock
 .git/
 .gitignore
 README.md
-Shuttle.toml
-migrations.sql 
+Shuttle.toml 
