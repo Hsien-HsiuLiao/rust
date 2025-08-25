@@ -3,15 +3,10 @@
   "outputDirectory": "target/release",
   "installCommand": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source $HOME/.cargo/env",
   "framework": null,
-  "functions": {
-    "api/**/*.rs": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "source": "/(.*)",
+      "destination": "/$1"
     }
   ],
   "env": {
