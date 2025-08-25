@@ -58,7 +58,9 @@ async fn main(
             .expect("Couldn't connect to the database :(");
 
 
-    db.execute(include_str!("../migrations.sql")).await.expect("Couldn't run the migrations :(");
+    // Try multiple possible paths for migrations file
+    let migrations_sql = include_str!("../migrations.sql");
+    db.execute(migrations_sql).await.expect("Couldn't run the migrations :(");
 
     let state = AppState::new(db);
 
