@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cargo build --release",
+  "buildCommand": "source $HOME/.cargo/env && cargo build --release",
   "outputDirectory": "target/release",
-  "installCommand": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source $HOME/.cargo/env",
+  "installCommand": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source $HOME/.cargo/env && rustup default stable",
   "framework": null,
   "rewrites": [
     {
