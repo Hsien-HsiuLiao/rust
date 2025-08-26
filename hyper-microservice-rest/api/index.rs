@@ -1,9 +1,8 @@
-use hyper::{Method, Request, Response, StatusCode};
-use hyper::body::Body;
 use std::sync::{Arc, Mutex};
 use slab::Slab;
 use std::fmt;
-use vercel_runtime::{run, Body as VercelBody, Error, Request as VercelRequest, Response as VercelResponse};
+use vercel_runtime::{run, Body as VercelBody, Error, Request as VercelRequest, Response as VercelResponse, StatusCode};
+use http::Method;
 
 const INDEX: &str = r#"
 <!doctype html>
@@ -49,7 +48,7 @@ const USER_PATH: &str = "/user/";
 
 async fn handler(req: VercelRequest) -> Result<VercelResponse<VercelBody>, Error> {
     let path = req.uri().path();
-    let user_db = Arc::new(Mutex::new(Slab::new())); // In production, this would be shared state
+    let user_db = Arc::new(Mutex::new(Slab::<UserData>::new())); // In production, this would be shared state
     
     let response = match (req.method(), path) {
         (&Method::GET, "/") => {
