@@ -87,10 +87,51 @@ Vercel can be used for deployment, though it requires additional configuration f
 
 #### Prerequisites
 
-- Vercel CLI installed
-- Vercel account
+- Vercel account (free at [vercel.com](https://vercel.com))
+- GitHub, GitLab, or Bitbucket repository (recommended)
 
-#### Setup
+#### Method 1: Deploy via Vercel Website (Recommended for beginners)
+
+1. **Push your code to a Git repository:**
+   ```bash
+   git add .
+   git commit -m "Add Vercel deployment config"
+   git push origin main
+   ```
+
+2. **Go to [vercel.com](https://vercel.com) and sign in**
+
+3. **Click "New Project"**
+
+4. **Import your Git repository:**
+   - Connect your GitHub/GitLab/Bitbucket account if not already connected
+   - Select your `shuttle-axum-restapi` repository
+   - Click "Import"
+
+5. **Configure the project:**
+   - **Framework Preset:** Select "Other" or "No Framework"
+   - **Root Directory:** Leave as default (or specify if your project is in a subdirectory)
+   - **Build Command:** `export HOME=/root && source $HOME/.cargo/env && cargo build --release`
+   - **Output Directory:** `target/release`
+   - **Install Command:** `export HOME=/root && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source $HOME/.cargo/env && rustup default stable`
+
+6. **Environment Variables (if needed):**
+   - Add any required environment variables like database URLs
+   - Click "Add" for each variable
+
+7. **Click "Deploy"**
+
+8. **Wait for deployment to complete:**
+   - Vercel will build and deploy your project
+   - You'll get a unique URL (e.g., `https://your-project.vercel.app`)
+
+**⚠️ Important Notes for Vercel Deployment:**
+- The build process may take several minutes as Vercel needs to install Rust and compile your application
+- Rust applications on Vercel have limitations - they run as serverless functions with execution time limits
+- Database connections may not work as expected in the serverless environment
+- For production Rust applications, Shuttle is still recommended over Vercel
+
+#### Method 2: Deploy via Vercel CLI
 
 1. Install Vercel CLI:
    ```bash
@@ -113,12 +154,15 @@ The project includes:
 - `vercel.json` - Vercel deployment configuration
 - `.vercelignore` - Files to exclude from deployment
 
+**⚠️ Important:** The `.vercelignore` file is configured to exclude unnecessary files but **keeps `migrations.sql`** to ensure it's available during the build process.
+
 #### Important Notes for Vercel
 
 - Vercel has limited Rust support compared to Shuttle
 - The current configuration uses Node.js runtime for API functions
 - Database connections may require additional configuration
 - Consider using Shuttle for production Rust applications
+- **Website deployment is easier for beginners** and provides a visual interface for configuration
 
 ## Database
 
