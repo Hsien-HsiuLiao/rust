@@ -1,0 +1,11 @@
+[package]
+name = "hyper-microservice-rest"
+version = "0.1.0"
+authors = ["Denis Kolodin <deniskolodin@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+slab = "0.4"
+hyper = { version = "1.7.0", features = ["full"] }
+vercel_runtime = "0.1"
+tokio = { version = "1.0", features = ["full"] }
