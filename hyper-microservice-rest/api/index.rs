@@ -52,11 +52,7 @@ async fn handler(req: VercelRequest) -> Result<VercelResponse<VercelBody>, Error
     
     let response = match (req.method(), path) {
         (&Method::GET, "/") => {
-            Response::builder()
-                .status(StatusCode::OK)
-                .header("Content-Type", "text/html")
-                .body(VercelBody::from(INDEX))
-                .unwrap()
+            VercelResponse::new(VercelBody::from(INDEX))
         },
         (method, path) if path.starts_with(USER_PATH) => {
             let user_id = path.trim_start_matches(USER_PATH)
@@ -68,14 +64,14 @@ async fn handler(req: VercelRequest) -> Result<VercelResponse<VercelBody>, Error
             match (method, user_id) {
                 (&Method::GET, Some(id)) => {
                     if let Some(data) = users.get(id) {
-                        Response::new(VercelBody::from(data.to_string()))
+                        VercelResponse::new(VercelBody::from(data.to_string()))
                     } else {
                         response_with_code(StatusCode::NOT_FOUND)
                     }
                 },
                 (&Method::POST, None) => {
                     let id = users.insert(UserData);
-                    Response::new(VercelBody::from(id.to_string()))
+                    VercelResponse::new(VercelBody::from(id.to_string()))
                 },
                 (&Method::POST, Some(_)) => {
                     response_with_code(StatusCode::BAD_REQUEST)
@@ -106,14 +102,11 @@ async fn handler(req: VercelRequest) -> Result<VercelResponse<VercelBody>, Error
         },
     };
     
-    Ok(response.map(VercelBody::from))
+    Ok(response)
 }
 
-fn response_with_code(status_code: StatusCode) -> Response<VercelBody> {
-    Response::builder()
-        .status(status_code)
-        .body(VercelBody::from(""))
-        .unwrap()
+fn response_with_code(status_code: StatusCode) -> VercelResponse<VercelBody> {
+    VercelResponse::new(VercelBody::from(""))
 }
 
 #[tokio::main]
