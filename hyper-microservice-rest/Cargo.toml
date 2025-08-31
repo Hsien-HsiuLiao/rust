@@ -7,10 +7,10 @@ edition = "2018"
 [dependencies]
 slab = "0.4"
 hyper = { version = "1.7.0", features = ["full"] }
-vercel_runtime = "1"
+vercel_runtime = "1.1.6"
 tokio = { version = "1.47.1", features = ["full"] }
 http = "1.0"
 
 [[bin]]
-name = "handler"
-path = "api/handler.rs"
+name = "index"
+path = "api/index.rs"

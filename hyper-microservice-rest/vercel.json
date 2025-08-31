@@ -1,7 +1,24 @@
 {
+  "buildCommand": "echo 'Build handled by vercel-rust runtime'",
+  "outputDirectory": ".",
+  "installCommand": "echo 'Install handled by vercel-rust runtime'",
   "functions": {
-    "api/handler.rs": {
+    "api/index.rs": {
       "runtime": "vercel-rust@4.0.9"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api",
+      "destination": "/api/index"
+    },
+    {
+      "source": "/api/",
+      "destination": "/api/index"
+    },
+    {
+      "source": "/api/user/:id*",
+      "destination": "/api/index"
+    }
+  ]
 } 
