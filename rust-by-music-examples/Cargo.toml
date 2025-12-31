@@ -1,0 +1,67 @@
+[package]
+name = "rust-by-music-examples"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "Rust learning examples with music-themed code"
+license = "MIT"
+
+# This allows running different example files
+[[bin]]
+name = "01_ownership_borrowing"
+path = "01_ownership_borrowing.rs"
+
+[[bin]]
+name = "02_basic_types"
+path = "02_basic_types.rs"
+
+[[bin]]
+name = "03_functions_methods"
+path = "03_functions_methods.rs"
+
+[[bin]]
+name = "04_structs_enums"
+path = "04_structs_enums.rs"
+
+[[bin]]
+name = "05_lifetimes"
+path = "05_lifetimes.rs"
+
+[[bin]]
+name = "06_traits"
+path = "06_traits.rs"
+
+[[bin]]
+name = "07_generic_types"
+path = "07_generic_types.rs"
+
+[[bin]]
+name = "08_error_handling"
+path = "08_error_handling.rs"
+
+[[bin]]
+name = "09_macros"
+path = "09_macros.rs"
+
+[[bin]]
+name = "10_unsafe_rust"
+path = "10_unsafe_rust.rs"
+
+[[bin]]
+name = "11_smart_pointers"
+path = "11_smart_pointers.rs"
+
+[[bin]]
+name = "12_closures_iterators"
+path = "12_closures_iterators.rs"
+
+# Default binary (you can change this to any example you want to run by default)
+[[bin]]
+name = "main"
+path = "03_functions_methods.rs"
+
+[dependencies]
+# Add any external dependencies here as needed
+# For example:
+# serde = { version = "1.0", features = ["derive"] }
+# tokio = { version = "1.0", features = ["full"] }
